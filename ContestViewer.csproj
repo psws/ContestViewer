@@ -108,7 +108,7 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
-    <Content Include="App_Data\cn2r_db.mdb" />
+    <Content Include="App_Data\Contests\cn2r_db.mdb" />
     <Content Include="App_Data\Contests\CqwwCw2006Contest.mdb" />
     <Content Include="App_Data\Contests\CqwwCw2007Contest.mdb" />
     <Content Include="App_Data\Contests\CqwwCw2008Contest.mdb" />
