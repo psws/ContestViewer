@@ -1,0 +1,12 @@
+﻿Add Cookies
+Make video for results and for default page.
+Handle backspace on calls on default page.  Maybe a clear call button 'C'
+Hamdle error pages
+Handle timeouts for async postback
+Add WPX logs
+Add CQ160 results
+Add wox results
+
+Fix back button problem where call selected is not retained if you push IE back buttom
+Filter results keystrokes for '*'...  HC* in country box/
+

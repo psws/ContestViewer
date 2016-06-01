@@ -1,0 +1,31 @@
+﻿.TblHdrRow
+{
+    background-color: #AAE3FF;
+    height: 25px;
+    text-align: left;
+}
+.TblHdrCallRow
+{
+    height: 25px;
+    text-align: left;
+}
+.TblHdrTitleRow
+{
+    border: thick double #000080;
+    height: 30px;
+    text-align: center;
+    background-color: #FFCC00;
+}
+.TblHdrTitleRowCell
+{
+    border: thick double #000080;
+}
+.TblHdrRowQCell
+{
+    width: 25px;
+    font-size: .6em;
+}
+.TblRowQCell
+{
+    font-size: .8em;
+}

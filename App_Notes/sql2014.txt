@@ -1,0 +1,12 @@
+﻿To get IE11 to work in dev studio 2010:
+GO to SQLServerManagementStudio 2014
+attach logqso.mdf
+add udsr jimd9m8r  pwd jims to db and also logqso
+unde Logqso->properties set
+grant execute permissions for exec, delet, exec an maybe more
+
+Mark the Contestviewer directory for full NetworkSerice acess
+also add IUser to direcory
+http://forums.iis.net/t/1174514.aspx
+
+I had to make the counter diredtory writeabl by all

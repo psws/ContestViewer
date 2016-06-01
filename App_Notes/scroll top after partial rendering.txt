@@ -1,0 +1,3 @@
+﻿The       //Calltxtbox.Focus(); line imload must not occur
+int pageload postback for partial rendering or screen jumps to top.
+Need to place it in !ispostack.

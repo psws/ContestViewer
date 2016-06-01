@@ -1,0 +1,66 @@
+﻿.ContestLabelTitle
+{
+    font-family: Verdana;
+    font-size: 8pt;
+    font-weight: 500;
+    color: #FF0000;
+    text-decoration: underline;
+}
+.ContestLabels
+{
+    font-family: Verdana;
+    font-size: 8pt;
+    font-weight: 700;
+    color: #000000;
+}
+.TdLogbookRowCell
+{
+    border: 1px solid teal;
+    color: maroon;
+    background-color: #F8F8F8;
+    font-size: 1.0em;
+}
+.TdHdrStyle
+{
+    color: blue;
+    border: 3px double teal;
+    background-color: #D5EAFF;
+    font-size: .9em;
+    font-weight: bold;
+}
+.TdLogbookRowHCallCell
+{
+    border: 1px solid teal;
+    background-color: yellow;
+    color: maroon;
+    font-weight: 700;
+    text-indent: 5px;
+}
+
+.disabled_button
+{        
+    color:#aca899;
+    background-color:#efefef;
+    border:solid 1px #c0c0c0;
+}
+.DBPagerButton
+{
+    padding: 2px;
+    color: black;
+    background-color: #84D7FF;
+    font-size: .87em;
+    font-weight: bold;
+}
+.ResultsPanel
+{
+    width: 990px;
+    background-color: #77BBFF;
+    margin: 1px 0px 0px -1px;
+    border: 1px ridge #496077;
+    height: 655px;
+}
+
+.CurLbl
+{
+    text-align: left;
+}

@@ -1,0 +1,12 @@
+﻿
+<asp:button runat="server" SkinID= "butSkin" BackColor="#84D7FF" ForeColor="black"
+    font-size=".87em"
+    Font-Bold="True" />
+<asp:DropDownList runat="server" BackColor="#84D7FF" ForeColor="black"
+font-size=".77em"
+Font-Bold="True" />
+<asp:TextBox runat="server" BackColor="#84D7FF" ForeColor="black"
+font-size=".78em"
+Font-Bold="True" />
+
+

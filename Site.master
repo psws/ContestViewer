@@ -1,0 +1,119 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="SiteMaster" CodeBehind="Site.master.cs" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+    <title></title>
+    <link href="~/Styles/Site2_0.css" rel="stylesheet" type="text/css" id="cssSite" />
+    <link rel="SHORTCUT ICON" href="http://www.logqso.com/logqso.ico" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server" id="Form1">
+    <div class="page">
+        <asp:ScriptManager ID="Scriptmanager1" runat="server" AsyncPostBackTimeout="600">
+        <Scripts>
+            <asp:ScriptReference Path="Scripts/videopop.js" />
+        </Scripts>
+        </asp:ScriptManager>
+        <div class="header">
+            <div class="title">
+                <h1>
+                    <span>LOGQSO<span class="subTitle">&nbsp; &nbsp; Contest Log Viewer - Analyzer</span>
+                    </span>
+                </h1>
+            </div>
+            <div class="loginDisplay">
+                <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
+                    <AnonymousTemplate>
+                        [ <a href="~/Account/Login.aspx" id="HeadLoginStatus" runat="server" visible="True">
+                            Log In</a> ]
+                    </AnonymousTemplate>
+                    <LoggedInTemplate>
+                        Welcome <span class="bold">
+                            <asp:LoginName ID="HeadLoginName" runat="server" />
+                        </span>&nbsp;&nbsp;&nbsp; [
+                        <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out"
+                            LogoutPageUrl="~/" />
+                        ]
+                    </LoggedInTemplate>
+                </asp:LoginView>
+            </div>
+            <div class="clear hideSkiplink">
+                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false"
+                    IncludeStyleBlock="False" Orientation="Horizontal">
+                    <Items>
+                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home" />
+                        <asp:MenuItem NavigateUrl="~/Results.aspx" Text="Results" />
+                        <asp:MenuItem  Text="Help Videos" Selectable="False">
+<%--                            <asp:MenuItem  NavigateUrl="javascript:PlayerOpen('LogQso Video','Wmp/intro.wmv','Controls and Selection Overview', 'INTRODUCTION');"
+                                Text="Home page Introduction &nbsp;&nbsp;&nbsp;wmv(9Mb)" />
+--%> 
+                            <asp:MenuItem  NavigateUrl="javascript:PlayerFlashOpen('LogQso Video','intro.swf','Controls and Selection Overview', 'INTRODUCTION');"
+                                Text="Home page Introduction &nbsp;&nbsp;&nbsp;&nbsp;flash(7Mb)" />
+<%--                              <asp:MenuItem  NavigateUrl="javascript:PlayerOpen('LogQso Video','Wmp/login.wmv','Creating your user account for login and the \'Remember Me\' fuunctionality', 'LOGIN');"
+                                Text="Home page Login &nbsp;&nbsp;&nbsp;wmv(9Mb)" />
+--%> 
+                            <asp:MenuItem  NavigateUrl="javascript:PlayerFlashOpen('LogQso Video','login.swf','Creating your user account for login and the \'Remember Me\' fuunctionality', 'LOGIN');"
+                                Text="Home page Login &nbsp;&nbsp;&nbsp&nbsp;flash(9Mb)" />
+<%--                            <asp:MenuItem  NavigateUrl="javascript:PlayerOpen('LogQso Video','Wmp/Call.wmv','Call1, Call2, Call3 Selection methods', 'CALL and CONTEST');"
+                                Text="Home page Select Call &nbsp;&nbsp;&nbsp;wmv(18Mb)" />
+--%>                             <asp:MenuItem  NavigateUrl="javascript:PlayerFlashOpen('LogQso Video','Call.swf','Call1, Call2, Call3 Selection methods', 'CALL and CONTEST');"
+                                Text="Home page Select Call &nbsp;&nbsp;&nbsp;&nbsp;flash(14Mb)" />
+<%--                            <asp:MenuItem  NavigateUrl="javascript:PlayerOpen('LogQso Video','Wmp/Qso.wmv','Filter by Band, Continent, Country or Zone', 'QSO FILTER');"
+                                Text="Home page Qso Filter &nbsp;&nbsp;&nbsp;wmv(9Mb)" />
+--%>                             <asp:MenuItem  NavigateUrl="javascript:PlayerFlashOpen('LogQso Video','Qso.swf','Filter by Band, Continent, Country or Zone', 'QSO FILTER');"
+                                Text="Home page Qso Filter &nbsp;&nbsp;&nbsp;&nbsp;flash(8Mb)" />
+<%--                             <asp:MenuItem  NavigateUrl="javascript:PlayerOpen('LogQso Video','Wmp/Yaxis.wmv','Select Graphing function, Sample interval, and View type', 'Y-AXIS VIEW');"
+                                Text="Home page Y-axis View &nbsp;&nbsp;&nbsp;wmv(18Mb)" />
+--%>                             <asp:MenuItem  NavigateUrl="javascript:PlayerFlashOpen('LogQso Video','Yaxis.swf','Select Graphing function, Sample interval, and View type', 'Y-AXIS VIEW');"
+                                Text="Home page Y-axis View &nbsp;&nbsp;&nbsp;&nbsp;flash(15Mb)" />
+<%--                              <asp:MenuItem  NavigateUrl="javascript:PlayerOpen('LogQso Video','Wmp/Xaxis.wmv','Select X-Axis Start Time and Hours to display', 'TIME ZOOM');"
+                                Text="Home page Time Zoom &nbsp;&nbsp;&nbsp;wmv(8Mb)" />
+--%>                             <asp:MenuItem  NavigateUrl="javascript:PlayerFlashOpen('LogQso Video','Xaxis.swf','Select X-Axis Start Time and Hours to display', 'TIME ZOOM');"
+                                Text="Home page Time Zoom &nbsp;&nbsp;&nbsp;&nbsp;flash(7Mb)" />
+<%--                               <asp:MenuItem  NavigateUrl="javascript:PlayerOpen('LogQso Video','Wmp/Save.wmv','Save your graphs using Microsoft Word', 'SAVING THE GRAPHS');"
+                                Text="Home page Saving Graph &nbsp;&nbsp;&nbsp;wmv(8Mb)" />
+--%>                             <asp:MenuItem  NavigateUrl="javascript:PlayerFlashOpen('LogQso Video','Save.swf','Save your graphs using Microsoft Word', 'SAVING THE GRAPHS');"
+                                Text="Home page Saving Graph &nbsp;&nbsp;&nbsp;&nbsp;flash(7Mb)" />
+<%--                            <asp:MenuItem  NavigateUrl="javascript:PlayerOpen('LogQso Video','Wmp/Results.wmv','Controls and Selection Overview', 'INTRODUCTION');"
+                                Text="Results page Introduction &nbsp;&nbsp;&nbsp;wmv(15Mb)" />
+--%>                             <asp:MenuItem  NavigateUrl="javascript:PlayerFlashOpen('LogQso Video','Results.swf','Controls and Selection Overview', 'INTRODUCTION');"
+                                Text="Results page Introduction &nbsp;&nbsp;&nbsp;&nbsp;flash(11Mb)" />
+<%--                             <asp:MenuItem  NavigateUrl="javascript:PlayerOpen('LogQso Video','Wmp/Results2.wmv','Continent, Contests and Entry Class', 'PART 2');"
+                                Text="Results page Part 2 &nbsp;&nbsp;&nbsp;wmv(15Mb)" />
+--%>                             <asp:MenuItem  NavigateUrl="javascript:PlayerFlashOpen('LogQso Video','Results2.swf','Controls and Selection Overview', 'PART 2');"
+                                Text="Results page Part 2 &nbsp;&nbsp;&nbsp;&nbsp;flash(12Mb)" />
+                   <asp:MenuItem  Selectable="False" Text="-----------------------------------------------" />
+                         <asp:MenuItem NavigateUrl="~/Help.aspx" Text="Help Document" />
+                     </asp:MenuItem>
+                       <asp:MenuItem NavigateUrl="~/feedback.aspx" Text="Feedback" />
+                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="About" />
+                    </Items>
+                </asp:Menu>
+            </div>
+        </div>
+        <div id="ContentPlaceHolderPageDiv" class="main" runat="server">
+            <asp:ContentPlaceHolder ID="MC" runat="server" />
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+        <table>
+            <tr>
+                <td style="width: 600px; text-align: right">
+                    Website by:
+                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="http://psws.com">PSWS</asp:HyperLink>
+                </td>
+                <td style="width: 300px; text-align: center">
+                    <asp:ImageButton ID="ImageButtonD" runat="server" ImageUrl="~/images/btn_donate_LG.gif"
+                        PostBackUrl="~/paypal.aspx" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    </form>
+</body>
+</html>

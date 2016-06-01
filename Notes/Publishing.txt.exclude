@@ -1,0 +1,6 @@
+﻿DONOT publish to a IIS virtual Directory that is the ssame aas the build directory.
+   You end up with several web.config files in subdirectories that ripthe machin..level error.
+   These files come from the publish process (releas/debug meged config files.
+
+This problem dos not exist when publihing to a seperte tree other then the development 
+tree.

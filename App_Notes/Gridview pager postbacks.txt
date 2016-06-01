@@ -1,0 +1,2 @@
+﻿The gridview always postback if the ClientIdMode is set to static.
+The custom pager button always does full postback unlesss in an update panel.

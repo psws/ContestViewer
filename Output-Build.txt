@@ -1,0 +1,16 @@
+﻿------ Build started: Project: ContestViewer, Configuration: DebugProd Any CPU ------
+D:\vwd projects\ContestViewer\App_Class\SeriesObj.cs(166,26): warning CS0168: The variable 'e' is declared but never used
+D:\vwd projects\ContestViewer\App_Class\SeriesObj.cs(189,30): warning CS0168: The variable 'e' is declared but never used
+D:\vwd projects\ContestViewer\App_Class\SeriesObj.cs(213,30): warning CS0168: The variable 'e' is declared but never used
+D:\vwd projects\ContestViewer\Default.aspx.cs(87,22): warning CS0219: The variable 'bLoadSession' is assigned but its value is never used
+D:\vwd projects\ContestViewer\Default.aspx.cs(940,30): warning CS0168: The variable 'e' is declared but never used
+D:\vwd projects\ContestViewer\Default.aspx.cs(2380,34): warning CS0168: The variable 'e' is declared but never used
+D:\vwd projects\ContestViewer\Default.aspx.cs(2406,34): warning CS0168: The variable 'e' is declared but never used
+D:\vwd projects\ContestViewer\Default.aspx.cs(2437,34): warning CS0168: The variable 'e' is declared but never used
+D:\vwd projects\ContestViewer\App_Class\LookupService.cs(36,12): warning CS0169: The field 'LookupService.licenseKey' is never used
+D:\vwd projects\ContestViewer\App_Class\LookupService.cs(37,9): warning CS0414: The field 'LookupService.dnsService' is assigned but its value is never used
+D:\vwd projects\ContestViewer\App_Class\LookupService.cs(40,24): warning CS0414: The field 'LookupService.STATE_BEGIN' is assigned but its value is never used
+
+Compile complete -- 0 errors, 11 warnings
+  ContestViewer -> D:\vwd projects\ContestViewer\bin\ContestViewer.dll
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========

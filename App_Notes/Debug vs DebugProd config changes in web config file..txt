@@ -1,0 +1,12 @@
+﻿the connection string Logqso is used for membership validation.
+
+On PSS60 the databse is named ContestViewer.
+There is no way to if def the web.config file to switch to Contest viewer
+If you want to run in Debg locally you nned to change
+    <!--<add name="LogQso" connectionString="Data Source=PSS60\SQL2014;UID=jims9m8r;PWD=jims9m8r;Initial Catalog=ContestViewer" providerName="System.Data.OleDb" />-->
+    <!--<add name="LogQso" connectionString="Data Source=PSS31\SQLEXPRESS2008R2;UID=jims9m8r;PWD=jims;Initial Catalog=logqso" providerName="System.Data.OleDb" />-->
+    <add name="LogQso" connectionString="Data Source=mssql.logqso.com;UID=jims9m8r;PWD=jims9m8r;Initial Catalog=logqso" providerName="System.Data.OleDb"/>
+to this
+    <add name="LogQso" connectionString="Data Source=PSS60\SQL2014;UID=jims9m8r;PWD=jims9m8r;Initial Catalog=ContestViewer" providerName="System.Data.OleDb" 
+    <!--<add name="LogQso" connectionString="Data Source=PSS31\SQLEXPRESS2008R2;UID=jims9m8r;PWD=jims;Initial Catalog=logqso" providerName="System.Data.OleDb" />-->
+    <!--<add name="LogQso" connectionString="Data Source=mssql.logqso.com;UID=jims9m8r;PWD=jims9m8r;Initial Catalog=logqso" providerName="System.Data.OleDb"/>-->

@@ -1,0 +1,29 @@
+﻿http://msdn.microsoft.com/en-us/library/ms178586(v=vs.80).aspx
+For SQL  Express you need to run first:
+
+EXECUTE sp_configure 'show advanced options', 1
+RECONFIGURE WITH OVERRIDE
+GO
+
+EXECUTE sp_configure 'Agent XPs', 1
+RECONFIGURE WITH OVERRIDE
+GO
+
+EXECUTE sp_configure 'show advanced options', 0
+RECONFIGURE WITH OVERRIDE
+GO
+
+Then in Cmd window:
+
+aspnet_regsql.exe -S PSS31\SQLEXPRESS2008R2 -U jims9m8r -P jims -A all -d logqso
+For  Session:
+aspnet_regsql.exe -S PSS31\SQLEXPRESS2008R2 -E -ssadd -sstype c -d logqso
+
+add to web,config:
+ <system.web>
+      <sessionState mode="SQLServer"
+      allowCustomSqlDatabase="true"
+      sqlConnectionString="Database=logqso;data source=PSS31\SQLEXPRESS2008R2;UID=jims9m8r;PWD=jims"
+  </system.web>
+
+
