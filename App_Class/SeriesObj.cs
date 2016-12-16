@@ -155,16 +155,19 @@ public class SeriesObj : System.Web.UI.DataVisualization.Charting.Series
         SqlConnection oConn = new SqlConnection();
         DataTable oRS = new DataTable();
 
-        try
+        using (oConn)
         {
-            oConn.ConnectionString = sConnectionString;
-            oConn.Open();
-            SqlDataAdapter oDA = new SqlDataAdapter("EXEC " + sQuery, oConn);
-            oDA.Fill(oRS);
-            //oConn.Close();
+            try
+            {
+                oConn.ConnectionString = sConnectionString;
+                oConn.Open();
+                SqlDataAdapter oDA = new SqlDataAdapter("EXEC " + sQuery, oConn);
+                oDA.Fill(oRS);
+                //oConn.Close();
+            }
+            catch (Exception e) { }
+            finally { if (oConn.State == ConnectionState.Open) { oConn.Close(); } }
         }
-        catch (Exception e) { }
-        finally { if (oConn.State == ConnectionState.Open) { oConn.Close(); } }
 
         return oRS;
     }

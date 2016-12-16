@@ -217,6 +217,8 @@ namespace ContestViewer
                     CBCall3.Checked = ((ContestLogInfo)Session["Call3"]).CBCall;
                 }
                 DDLOpr.Enabled = true;
+
+
                 if (CategoryCB.Checked == true)
                 {
                     DDLOpr.Enabled = false;
@@ -939,18 +941,21 @@ namespace ContestViewer
             oRS.Columns.Add("StartDateTime", typeof(DateTime));
             oRS.Columns.Add("EndDateTime", typeof(DateTime));
 
-            try
+            using (oConn)
             {
-                oConn.ConnectionString = ConnectionString;
-                oConn.Open();
-                OleDbDataAdapter oDA = new OleDbDataAdapter(InfoQuery, oConn);
-                oDA.Fill(oRS);
-                //oConn.Close();
+                try
+                {
+                    oConn.ConnectionString = ConnectionString;
+                    oConn.Open();
+                    OleDbDataAdapter oDA = new OleDbDataAdapter(InfoQuery, oConn);
+                    oDA.Fill(oRS);
+                    //oConn.Close();
+                }
+                catch (Exception e)
+                {
+                }
+                finally { if (oConn.State == ConnectionState.Open) { oConn.Close(); } }
             }
-            catch (Exception e)
-            {
-            }
-            finally { if (oConn.State == ConnectionState.Open) { oConn.Close(); } }
 
             ContestInfo Ctinfo = new ContestInfo();
             foreach (DataRow dr in oRS.Rows)
@@ -1144,18 +1149,21 @@ namespace ContestViewer
 
             ds.Tables["Contests"].Columns.Add("ContestID", Type.GetType("System.String"));
             ds.Tables["Contests"].Columns.Add("ContestName", Type.GetType("System.String"));
-            try
+            using (oConn)
             {
-                oConn.ConnectionString = ConnectionString;
-                oConn.Open();
-                OleDbDataAdapter oDA = new OleDbDataAdapter(InfoQuery, oConn);
-                oDA.Fill(ds, "Contests");
-                //oConn.Close();
+                try
+                {
+                    oConn.ConnectionString = ConnectionString;
+                    oConn.Open();
+                    OleDbDataAdapter oDA = new OleDbDataAdapter(InfoQuery, oConn);
+                    oDA.Fill(ds, "Contests");
+                    //oConn.Close();
+                }
+                catch (Exception)
+                {
+                }
+                finally { if (oConn.State == ConnectionState.Open) { oConn.Close(); } }
             }
-            catch (Exception)
-            {
-            }
-            finally { if (oConn.State == ConnectionState.Open) { oConn.Close(); } }
             DDL1.DataSource = ds;
             DDL1.DataMember = "Contests";
             DDL1.DataTextField = "ContestID";
@@ -1180,6 +1188,10 @@ namespace ContestViewer
         public void LoadDdl(string ConnectionString, DropDownList ddl, string Textddl, string valueddl, string tableddl,
             int Index, string function)
         {
+            //if (ConnectionString.Contains("{AppDir}")  )
+            //{
+            //    ConnectionString = ConnectionString.Replace("{AppDir}", AppDomain.CurrentDomain.BaseDirectory);
+            //}
             string InfoQuery = @"SELECT " + Textddl + ", " + valueddl + " FROM " + tableddl + " ORDER BY " + valueddl;
             OleDbConnection oConn = new OleDbConnection();
             DataSet ds = new DataSet();
@@ -1187,18 +1199,31 @@ namespace ContestViewer
 
             ds.Tables[tableddl].Columns.Add(valueddl, Type.GetType("System.Int32"));
             ds.Tables[tableddl].Columns.Add(Textddl, Type.GetType("System.String"));
-            try
+            using (oConn)
             {
-                oConn.ConnectionString = ConnectionString;
-                oConn.Open();
-                OleDbDataAdapter oDA = new OleDbDataAdapter(InfoQuery, oConn);
-                oDA.Fill(ds, tableddl);
-                //oConn.Close();
+                try
+                {
+                    oConn.ConnectionString = ConnectionString;
+                    oConn.Open();
+                    OleDbDataAdapter oDA = new OleDbDataAdapter(InfoQuery, oConn);
+                    oDA.Fill(ds, tableddl);
+                    //oConn.Close();
+                }
+
+                catch (InvalidOperationException ex)
+                {
+                    throw;
+                }
+                catch (OleDbException ex)
+                {
+                    throw;
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
+                finally { if (oConn.State == ConnectionState.Open) { oConn.Close(); } }
             }
-            catch (Exception)
-            {
-            }
-            finally { if (oConn.State == ConnectionState.Open) { oConn.Close(); } }
             ddl.DataSource = ds;
             ddl.DataMember = tableddl;
             ddl.DataTextField = Textddl;
@@ -1263,18 +1288,21 @@ namespace ContestViewer
 
             ds.Tables[tableddl].Columns.Add(valueddl, Type.GetType("System.String"));
             ds.Tables[tableddl].Columns.Add(Textddl, Type.GetType("System.String"));
-            try
+            using (oConn)
             {
-                oConn.ConnectionString = ConnectionString;
-                oConn.Open();
-                OleDbDataAdapter oDA = new OleDbDataAdapter(InfoQuery, oConn);
-                oDA.Fill(ds, tableddl);
-                //oConn.Close();
+                try
+                {
+                    oConn.ConnectionString = ConnectionString;
+                    oConn.Open();
+                    OleDbDataAdapter oDA = new OleDbDataAdapter(InfoQuery, oConn);
+                    oDA.Fill(ds, tableddl);
+                    //oConn.Close();
+                }
+                catch (Exception)
+                {
+                }
+                finally { if (oConn.State == ConnectionState.Open) { oConn.Close(); } }
             }
-            catch (Exception)
-            {
-            }
-            finally { if (oConn.State == ConnectionState.Open) { oConn.Close(); } }
             ddl.DataSource = ds;
             ddl.DataMember = tableddl;
             ddl.DataTextField = Textddl;
@@ -1798,6 +1826,7 @@ namespace ContestViewer
             ContestCallsSqlDataSource.ConnectionString = sConn;
             string sFilter;
             //Get all CallIDS from all contests in weblog.mdb
+            
             if (PanHdr == '0')
 	        {
                 //sFilter = "[123456789]";  //SQL
@@ -2187,7 +2216,7 @@ namespace ContestViewer
                               " GROUP BY  [" + colTime + "] ) AS Qry5minintervals" +
                               " GROUP BY [Time1] ";
                         ContestViewParms = new ContestViewParms(sChartFunction, SerTablename, sIntvTime, sQCnt, "QSO Rate",
-                        "QSOs Per " + ChartAreaInfo.ChartPointtInterval.ToString() + " Minures", QSOQuery, GetDataOLETable, false);
+                        "QSOs Per " + ChartAreaInfo.ChartPointtInterval.ToString() + " Minutes", QSOQuery, GetDataOLETable, false);
                     break;
                 case "QSO  Sum":
                     QSOQuery = @"SELECT [Time1] AS " + sIntvTime + ", Sum(Qry5minintervals.N) AS " + sQCnt +
